@@ -13,8 +13,8 @@
     <div class="flex justify-center">
         <ul class="text-white mt-24 text-2xl">
             <li class="mb-4 text-yellowactive flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Home</li>
-            <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Categories</li>
-            <li class="mb-4 flex"><img src="image/boussole.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Discovery</li>
+            <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
+            <li class="mb-4 flex"><img src="image/boussole.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="#">Discovery</a></li>
         </ul>
     </div>
     <hr class="border-slate-500 w-40 ml-12 mt-5">
@@ -27,7 +27,7 @@
     <div class="flex justify-center">
         <ul class="text-white mt-60 text-2xl gap-24">
             <li class="mb-2 flex"><img src="image/login.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Login</li>
-            <a href="register.php" ><li class="flex"><img src="image/register.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Register</li></a>
+            <li class="flex"><img src="image/register.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="register.php" >Register</a></li>
         </ul>
     </div>
 </div>
@@ -47,23 +47,23 @@
         </div>
     </div>
 
-
     <div class=" w-full mt-10">
-        <p class="text-white text-2xl ml-40 mb-8">Trends :</p>
+        <p class="text-white text-2xl ml-40 mb-8">Trending movies :</p>
         <div class="mx-auto max-w-7xl overflow-x-scroll white-space-nowrap">
-            <div id="results" class="flex gap-10 mb-7">
+            <div id="popularMovies" class="flex gap-10 mb-7">
 
             </div>
         </div>
     </div>
 
     <div class=" w-full mt-10">
-        <p class="text-white text-2xl ml-40 mb-8">All TV Shows :</p>
-        <div id="tv-trend-wrapper" class="flex gap-10 justify-center">
+        <p class="text-white text-2xl ml-40 mb-8">Trending TV Shows :</p>
+        <div class="mx-auto max-w-7xl overflow-x-scroll white-space-nowrap">
+            <div id="popularTv" class="flex gap-10 mb-7">
 
+            </div>
         </div>
-    </div>
 </div>
-<script src="main.js"></script>
+<script src="js/popular.js"></script>
 </body>
 </html>
