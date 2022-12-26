@@ -46,15 +46,18 @@
             </div>
         </div>
     </div>
-    <div class=" w-full h-64 mt-10">
-        <p class="text-white text-2xl ml-40 mb-8">Trends :</p>
-        <div id="movie-trend-wrapper" class="flex gap-10 justify-center">
 
-            <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
+
+    <div class=" w-full mt-10">
+        <p class="text-white text-2xl ml-40 mb-8">Trends :</p>
+        <div class="mx-auto max-w-7xl overflow-x-scroll white-space-nowrap">
+            <div id="results" class="flex gap-10 mb-7">
+
+            </div>
         </div>
     </div>
 
-    <div class=" w-full h-64 mt-10">
+    <div class=" w-full mt-10">
         <p class="text-white text-2xl ml-40 mb-8">All TV Shows :</p>
         <div id="tv-trend-wrapper" class="flex gap-10 justify-center">
 
