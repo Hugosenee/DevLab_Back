@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.scss">
     <title>Vite App</title>
+      <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="flex">
   <div class="h-screen w-60 bg-navbar flex flex-col fixed top-0">
