@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         'navbar' : '#000814',
-        'bgblue' : '#000E24',
+        'bgble' : '#000E24',
         'yellowactive' : '#FFD60A'
       }
     },

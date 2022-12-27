@@ -22,5 +22,31 @@ class Connection
             'password' => md5($user->password . 'MY_SUPER_SALT'),
         ]);
     }
+
+    public function connect(Userconnect $user): bool
+    {
+        $query = "SELECT password FROM user WHERE email = '$user->email'";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        $tableau = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if(md5($user->password . 'MY_SUPER_SALT') == $tableau[0]['password']){
+            return true;
+        }   else {
+            return false;
+        }
+    }
+
+    public function getid($email): array
+    {
+        $query = "SELECT * FROM user WHERE email = '$email'";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        $board = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $board;
+    }
 }
 

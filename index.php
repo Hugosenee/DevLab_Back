@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+require_once 'connection.php';
+
+$connection = new Connection();
+if($_SESSION){
+    $get = $connection->getid($_SESSION['email']);
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +24,7 @@
       <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="flex">
-  <div class="h-screen w-60 bg-navbar flex flex-col fixed top-0">
+  <div class="h-full bg-black w-60 flex flex-col fixed top-0">
     <div class="flex justify-center">
       <ul class="text-white mt-24 text-2xl">
         <li class="mb-4 text-yellowactive flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Home</li>
@@ -25,13 +40,20 @@
       </ul>
     </div>
     <div class="flex justify-center">
-      <ul class="text-white mt-60 text-2xl gap-24">
-        <li class="mb-2 flex"><img src="image/login.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Login</li>
-        <a href="register.php" ><li class="flex"><img src="image/register.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Register</li></a>
-      </ul>
+      <div class="text-white mt-60 text-2xl gap-24 flex-col">
+        <?php
+            if($_SESSION){ ?>
+                <p class="text-base"> <?= $_SESSION['email'] ?> </p>
+                <?php echo '<a href="logout.php" id="deco" class="text-base">Déconnexion</a>';
+            }   else {
+                echo '<a href="login.php"><li class="mb-2 flex"><img src="image/login.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Login</li></a>
+                      <a href="register.php" ><li class="flex"><img src="image/register.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Register</li></a>';
+            }
+        ?>
+      </div>
     </div>
   </div>
-  <div class=" w-screen bg-bgblue ml-60">
+  <div class=" w-screen bg-slate-900 ml-60">
     <div class=" flex flex-col">
       <div class="flex justify-end mt-6 mr-12">
         <div class="h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">

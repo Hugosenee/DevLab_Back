@@ -7,20 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.scss">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Register</title>
 </head>
 <body>
-<h1>Register an account</h1>
-<form method="post" id="form">
-    <input type="email" name="email" placeholder="E-mail" class="form-control"><br>
-    <input type="text" name="username" placeholder="username" class="form-control"><br>
-    <input type="password" name="password1" placeholder="Password" class="form-control"><br>
-    <input type="password" name="password2" placeholder="Password (retype)" class="form-control"><br>
-    <input type="submit" value="Register" class="btn btn-primary">
-</form>
+<div class="h-full bg-black w-full flex  fixed">
+    <div class="w-1/2 h-full bg-black flex flex-col justify-center items-center">
+        <h1 class="text-white text-4xl">Create a new account</h1>
+        <h2 class="text-gray-500 text-sm pb-20">Please fill the form to continue</h2>
+        <form method="post" id="form">
+            <input type="email" name="email" placeholder="E-mail" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
+            <input type="text" name="username" placeholder="username" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
+            <input type="password" name="password1" placeholder="Password" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
+            <input type="password" name="password2" placeholder="Password (retype)" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
+            <input type="submit" value="Sign Up" class="bg-blue-800 w-96 h-16 rounded-2xl text-center mb-6 text-white">
+        </form>
+        <p class="text-white">Already have an account ?<a href="login.php" class="text-blue-500"> Login</a></p>
+    </div>
+    <div class="w-1/2 h-full bg-slate-900"></div>
+</div>
 
-<p>Already have an account ?<a href="connectaccount.php">Login</a></p>
 
 <?php
 require_once 'user.php';
@@ -39,7 +44,7 @@ if ($_POST) {
         $result = $connection->insert($user);
 
         if ($result) {
-            header('Location: index.php');
+            header('Location: login.php');
         } else {
             echo 'Internal error 🥲';
         }
