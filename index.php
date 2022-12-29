@@ -68,31 +68,16 @@ if($_SESSION){
     <div class=" w-full h-64 mt-10">
       <p class="text-white text-2xl ml-40 mb-8">Tendances :</p>
       <div class="flex gap-10 justify-center">
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
       </div>
     </div>
     <div class=" w-full h-64 mt-10">
       <p class="text-white text-2xl ml-40 mb-8">All movies :</p>
       <div class="flex gap-10 justify-center">
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
       </div>
     </div>
     <div class=" w-full h-64 mt-10">
       <p class="text-white text-2xl ml-40 mb-8">All TV Shows :</p>
       <div class="flex gap-10 justify-center">
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
-        <div class="bg-navbar w-40 h-48 rounded-2xl"></div>
       </div>
     </div>
   </div>
