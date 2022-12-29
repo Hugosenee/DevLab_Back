@@ -8,9 +8,6 @@ $connection = new Connection();
 if($_SESSION){
     $get = $connection->getid($_SESSION['email']);
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
