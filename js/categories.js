@@ -12,7 +12,9 @@ async function getMoviesByGenre(Id) {
         resultsContainer.innerHTML = "";
         for (const movie of data.results) {
             resultsContainer.innerHTML += `
-              <img class="w-32 h-72" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}">
+               <a href="movieSingle.php?id=${movie.id}">
+                             <img class="w-32 h-72" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}">
+                </a>
             `;
         }
     } catch (error) {

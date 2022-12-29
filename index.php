@@ -17,15 +17,15 @@ if($_SESSION){
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.scss">
-    <title>Vite App</title>
+    <title>Home</title>
       <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="flex">
   <div class="h-full bg-black w-60 flex flex-col fixed top-0">
     <div class="flex justify-center">
       <ul class="text-white mt-24 text-2xl">
-        <li class="mb-4 text-yellowactive flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Home</li>
-        <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Categories</li>
+        <li class="mb-4 text-yellow-400 flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
+        <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
         <li class="mb-4 flex"><img src="image/boussole.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Discovery</li>
       </ul>
     </div>
@@ -50,6 +50,8 @@ if($_SESSION){
       </div>
     </div>
   </div>
+
+
   <div class=" w-screen bg-slate-900 ml-60">
     <div class=" flex flex-col">
       <div class="flex justify-end mt-6 mr-12">
@@ -67,19 +69,21 @@ if($_SESSION){
     </div>
     <div class=" w-full h-64 mt-10">
       <p class="text-white text-2xl ml-40 mb-8">Tendances :</p>
-      <div class="flex gap-10 justify-center">
-      </div>
-    </div>
-    <div class=" w-full h-64 mt-10">
-      <p class="text-white text-2xl ml-40 mb-8">All movies :</p>
-      <div class="flex gap-10 justify-center">
-      </div>
+        <div class="mx-auto max-w-7xl overflow-x-scroll">
+            <div id="popularMovies" class="flex gap-7 mb-7">
+
+            </div>
+        </div>
     </div>
     <div class=" w-full h-64 mt-10">
       <p class="text-white text-2xl ml-40 mb-8">All TV Shows :</p>
-      <div class="flex gap-10 justify-center">
-      </div>
+        <div class="mx-auto max-w-7xl overflow-x-scroll">
+            <div id="popularTv" class="flex gap-7 mb-7">
+
+            </div>
+        </div>
     </div>
   </div>
+  <script src="js/popular.js"></script>
   </body>
 </html>
