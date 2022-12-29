@@ -47,19 +47,18 @@
         </div>
     </div>
 
-    <div class=" w-full mt-10">
+    <div class="w-full mt-10">
         <p class="text-white text-2xl ml-40 mb-8">Trending movies :</p>
-        <div class="mx-auto max-w-7xl overflow-x-scroll white-space-nowrap">
-            <div id="popularMovies" class="flex gap-10 mb-7">
 
-            </div>
+        <div id="popularMovies" class="flex">
+
         </div>
     </div>
 
     <div class=" w-full mt-10">
         <p class="text-white text-2xl ml-40 mb-8">Trending TV Shows :</p>
-        <div class="mx-auto max-w-7xl overflow-x-scroll white-space-nowrap">
-            <div id="popularTv" class="flex gap-10 mb-7">
+        <div class="mx-auto max-w-7xl overflow-x-scroll">
+            <div id="popularTv" class="flex gap-7 mb-7">
 
             </div>
         </div>
