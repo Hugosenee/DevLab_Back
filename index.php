@@ -6,7 +6,7 @@ require_once 'connection.php';
 
 $connection = new Connection();
 if($_SESSION){
-    $get = $connection->getid($_SESSION['email']);
+    $get = $connection->getiduser($_SESSION['email']);
 }
 ?>
 
@@ -56,8 +56,10 @@ if($_SESSION){
     <div class=" flex flex-col">
       <div class="flex justify-end mt-6 mr-12">
         <div class="h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
-          <input type="text" placeholder="Recherche" class="w-full bg-gray-400 rounded-3xl text-white text-center">
-          <img src="image/search.png" alt="search" class="w-6 h-6 mt-2 mr-4">
+            <form class="flex justify-between" action="searchResult.php" method="GET">
+                <input type="text" placeholder="Recherche" name="search" class="w-full bg-gray-400 rounded-3xl text-white text-center">
+                <input type="submit" class="w-10 text-xs">
+            </form>
         </div>
         <img src="image/notification.png" alt="notification" class="h-8 w-8 mt-1">
       </div>

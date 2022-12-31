@@ -8,27 +8,26 @@ $connection = new Connection();
 if($_SESSION){
     $get = $connection->getiduser($_SESSION['email']);
 }
-// a demander a Alexis si faire en POO
-$movieId = $connection->get("id");
+
+$searchResult = $connection->get("search");
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.scss">
+    <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Catégories</title>
 </head>
-<body class="flex bg-slate-900">
-
+<body class="flex">
 <div class="h-full bg-black w-60 flex flex-col fixed top-0">
     <div class="flex justify-center">
         <ul class="text-white mt-24 text-2xl">
-            <li class="mb-4  flex"><img src="image/home.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
-            <li class="mb-4 text-yellow-400 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
+            <li class="mb-4 text-yellow-400 flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
+            <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
             <li class="mb-4 flex"><img src="image/boussole.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Discovery</li>
         </ul>
     </div>
@@ -55,15 +54,10 @@ $movieId = $connection->get("id");
 </div>
 
 
-
-<div class=" w-screen h-screen bg-bgblue ml-60">
-<p id="movieId" class="hidden"><?= $movieId?></p>
-    <div id="movie-wrapper">
-
-    </div>
+<div class=" w-screen h-screen bg-slate-900 ml-60">
+    <p id="searchResult" class="hidden"><?= $searchResult?></p>
 </div>
-
-
-<script src="js/singleMovie.js"></script>
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>
