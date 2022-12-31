@@ -57,8 +57,8 @@ if($_SESSION){
       <div class="flex justify-end mt-6 mr-12">
         <div class="h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
             <form class="flex justify-between" action="searchResult.php" method="GET">
-                <input type="text" placeholder="Recherche" name="search" class="w-full bg-gray-400 rounded-3xl text-white text-center">
-                <input type="submit" class="w-10 text-xs">
+                <input type="text" placeholder="Recherche" name="search" class="focus:outline-none w-full bg-gray-400 rounded-3xl text-white text-center">
+                <input type="submit" class="text-xs cursor-pointer">
             </form>
         </div>
         <img src="image/notification.png" alt="notification" class="h-8 w-8 mt-1">

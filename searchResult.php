@@ -56,7 +56,12 @@ $searchResult = $connection->get("search");
 
 <div class=" w-screen h-screen bg-slate-900 ml-60">
     <p id="searchResult" class="hidden"><?= $searchResult?></p>
+    <div id="results">
+
+    </div>
 </div>
+
+
 <script src="./node_modules/axios/dist/axios.min.js"></script>
 <script src="js/search.js"></script>
 </body>
