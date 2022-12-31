@@ -19,6 +19,7 @@ if($_SESSION){
     <link rel="stylesheet" href="style.scss">
     <title>Home</title>
       <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
   </head>
   <body class="flex">
   <div class="h-full bg-black w-60 flex flex-col fixed top-0">
@@ -26,7 +27,6 @@ if($_SESSION){
       <ul class="text-white mt-24 text-2xl">
         <li class="mb-4 text-yellow-400 flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
         <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
-        <li class="mb-4 flex"><img src="image/boussole.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Discovery</li>
       </ul>
     </div>
     <hr class="border-slate-500 w-40 ml-12 mt-5">
@@ -56,15 +56,15 @@ if($_SESSION){
     <div class=" flex flex-col">
       <div class="flex justify-end mt-6 mr-12">
         <div class="h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
-            <form class="flex justify-between" action="searchResult.php" method="GET">
+            <form class="flex w-full" action="searchResult.php" method="GET">
                 <input type="text" placeholder="Recherche" name="search" class="focus:outline-none w-full bg-gray-400 rounded-3xl text-white text-center">
-                <input type="submit" class="text-xs cursor-pointer">
+                <button type="submit"><iconify-icon icon="ic:baseline-search" class="text-white text-3xl mr-4 mt-1"></iconify-icon></button>
             </form>
         </div>
         <img src="image/notification.png" alt="notification" class="h-8 w-8 mt-1">
       </div>
       <div class="flex justify-center">
-        <div class="w-3/4 h-72 bg-gray-400 mt-10 rounded-3xl overflow-hidden">
+        <div id="slideShow" class="w-3/4 h-72 bg-gray-400 mt-10 rounded-3xl overflow-hidden">
           <img src="image/spiderman.jpg" alt="affiche spiderman">
         </div>
       </div>

@@ -28,7 +28,6 @@ $searchResult = $connection->get("search");
         <ul class="text-white mt-24 text-2xl">
             <li class="mb-4 text-yellow-400 flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
             <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
-            <li class="mb-4 flex"><img src="image/boussole.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Discovery</li>
         </ul>
     </div>
     <hr class="border-slate-500 w-40 ml-12 mt-5">
@@ -54,9 +53,9 @@ $searchResult = $connection->get("search");
 </div>
 
 
-<div class=" w-screen h-screen bg-slate-900 ml-60">
-    <p id="searchResult" class="hidden"><?= $searchResult?></p>
-    <div id="results">
+<div class=" w-screen bg-slate-900 ml-60">
+    <p class="text-white text-center">Résultat de Recherche : <span id="searchResult" class="text-blue-500"><?= $searchResult?></span></p>
+    <div id="results" class="flex flex-wrap gap-10 justify-center py-16">
 
     </div>
 </div>
