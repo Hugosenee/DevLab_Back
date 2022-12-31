@@ -56,7 +56,7 @@ if($_SESSION){
     <div class=" flex flex-col">
       <div class="flex justify-end mt-6 mr-12">
         <div class="h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
-          <input type="text" placeholder="Recherche" class="w-full bg-gray-400 rounded-3xl text-white text-center">
+          <input id="searchBar" type="text" placeholder="Recherche" class="focus:outline-none w-full bg-gray-400 rounded-3xl text-white text-center">
           <img src="image/search.png" alt="search" class="w-6 h-6 mt-2 mr-4">
         </div>
         <img src="image/notification.png" alt="notification" class="h-8 w-8 mt-1">
@@ -84,6 +84,9 @@ if($_SESSION){
         </div>
     </div>
   </div>
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
   <script src="js/popular.js"></script>
+  <script src="js/search.js"></script>
+
   </body>
 </html>
