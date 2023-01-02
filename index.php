@@ -69,18 +69,18 @@ if($_SESSION){
         </div>
       </div>
     </div>
-    <div class=" w-full h-64 mt-10">
+    <div class=" w-full h-80 mt-10">
       <p class="text-white text-2xl ml-40 mb-8">Tendances :</p>
-        <div class="mx-auto max-w-7xl overflow-x-scroll">
-            <div id="popularMovies" class="flex gap-7 mb-7">
+        <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
+            <div id="popularMovies" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
 
             </div>
         </div>
     </div>
-    <div class=" w-full h-64 mt-10">
+    <div class=" w-full h-80 mt-10">
       <p class="text-white text-2xl ml-40 mb-8">All TV Shows :</p>
-        <div class="mx-auto max-w-7xl overflow-x-scroll">
-            <div id="popularTv" class="flex gap-7 mb-7">
+        <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
+            <div id="popularTv" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
 
             </div>
         </div>
