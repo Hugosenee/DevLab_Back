@@ -26,8 +26,7 @@ if($_SESSION){
     <div class="flex justify-center">
         <ul class="text-white mt-24 text-2xl">
             <li class="mb-4  flex"><img src="image/home.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
-            <li class="mb-4 text-yellow-400 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
-            <li class="mb-4 flex"><img src="image/boussole.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Discovery</li>
+            <li class="mb-4 text-yellow-400 flex"><img src="image/fichiersyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
         </ul>
     </div>
     <hr class="border-slate-500 w-40 ml-12 mt-5">
@@ -55,32 +54,36 @@ if($_SESSION){
 
 
 <div class=" w-screen h-screen bg-bgblue ml-60">
-    <h1 class="text-white">Catégories :</h1>
+    <h1 class="text-white text-center text-3xl">Catégories :</h1>
 
-    <select name="cat" id="cat">
-        <option value="" selected>Please select a value</option>
-        <option value="28">Action</option>
-        <option value="12">Adventure</option>
-        <option value="16">Animation</option>
-        <option value="35">Comedy</option>
-        <option value="80">Crime</option>
-        <option value="99">Documentary</option>
-        <option value="18">Drama</option>
-        <option value="10751">Family</option>
-        <option value="14">Fantasy</option>
-        <option value="36">History</option>
-        <option value="27">Horror</option>
-        <option value="10402">Music</option>
-        <option value="9648">Mystery</option>
-        <option value="10749">Romance</option>
-        <option value="878">Science Fiction</option>
-        <option value="10770">TV Movie</option>
-        <option value="53">Thriller</option>
-        <option value="10752">War</option>
-        <option value="37">Western</option>
-    </select>
-    <div id="movie-wrapper" class="flex flex-wrap gap-7 w-44">
+    <div class="flex justify-center mt-10">
+        <select name="cat" id="cat" class="w-80 h-12 rounded-3xl bg-gray-500 text-white text-center">
+            <option value="" selected>Please select a value</option>
+            <option value="28">Action</option>
+            <option value="12">Adventure</option>
+            <option value="16">Animation</option>
+            <option value="35">Comedy</option>
+            <option value="80">Crime</option>
+            <option value="99">Documentary</option>
+            <option value="18">Drama</option>
+            <option value="10751">Family</option>
+            <option value="14">Fantasy</option>
+            <option value="36">History</option>
+            <option value="27">Horror</option>
+            <option value="10402">Music</option>
+            <option value="9648">Mystery</option>
+            <option value="10749">Romance</option>
+            <option value="878">Science Fiction</option>
+            <option value="10770">TV Movie</option>
+            <option value="53">Thriller</option>
+            <option value="10752">War</option>
+            <option value="37">Western</option>
+        </select>
+    </div>
+    <div>
+        <div id="movie-wrapper" class="flex flex-wrap gap-10 justify-center py-16">
 
+        </div>
     </div>
 </div>
 
