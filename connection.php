@@ -38,7 +38,7 @@ class Connection
         }
     }
 
-    public function getid($email): array
+    public function getiduser($email): array
     {
         $query = "SELECT * FROM user WHERE email = '$email'";
 
@@ -47,6 +47,13 @@ class Connection
         $board = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $board;
+    }
+
+    public function get ($param): string
+    {
+        $result = $_GET[$param];
+        return $result;
+
     }
 }
 
