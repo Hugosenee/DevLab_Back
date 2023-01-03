@@ -38,10 +38,9 @@ class Connection
         }
     }
 
-    public function getiduser($email): array
+    public function getinfo($email)
     {
         $query = "SELECT * FROM user WHERE email = '$email'";
-
         $statement = $this->pdo->prepare($query);
         $statement->execute();
         $board = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -55,5 +54,53 @@ class Connection
         return $result;
 
     }
+
+    public function insertAlbum(Album $album): bool
+    {
+        $query = 'INSERT INTO album (name, is_private, user_id)
+                  VALUES (:name, :is_private, :id)';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'name' => $album->name,
+            'is_private' => $album->is_private,
+            'id' => $album->user_id,
+        ]);
+    }
+    public function getUserAlbum($userId): array
+    {
+        $query = "SELECT * FROM album WHERE user_id = '$userId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteAlbum(int $id): bool
+    {
+        $query = 'DELETE FROM album
+                  WHERE id = :id';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'id' => $id,
+        ]);
+    }
+
+    public function addMovie(movie $movie): bool
+    {
+        $query = 'INSERT INTO film (album_id, film_id)
+                  VALUES (:albumId, :movieId)';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'albumId' => $movie->albumId,
+            'movieId' => $movie->movieId,
+        ]);
+    }
+
+
 }
 

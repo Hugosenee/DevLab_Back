@@ -17,7 +17,7 @@
         <form method="post" id="form">
             <input type="email" name="email" placeholder="E-mail" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
             <input type="password" name="password" placeholder="Password" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
-            <input type="submit" value="Sign In" class="bg-blue-800 w-96 h-16 rounded-2xl text-center mb-6 text-white">
+            <input type="submit" value="Sign In" class="bg-blue-800 w-96 h-16 rounded-2xl text-center mb-6 text-white cursor-pointer">
         </form>
         <p class="text-white">Don't have an account ?<a href="register.php" class="text-blue-500"> Sign up</a></p>
     </div>

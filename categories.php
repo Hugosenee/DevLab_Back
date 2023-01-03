@@ -6,7 +6,10 @@ require_once 'connection.php';
 
 $connection = new Connection();
 if($_SESSION){
-    $get = $connection->getid($_SESSION['email']);
+    $infosession = $connection->getinfo($_SESSION['email']);
+    $_SESSION['id'] = $infosession[0]['id'];
+    $_SESSION['username'] = $infosession[0]['username'];
+    $_SESSION['email'] = $infosession[0]['email'];
 }
 ?>
 

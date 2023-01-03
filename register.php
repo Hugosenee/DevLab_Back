@@ -19,7 +19,7 @@
             <input type="text" name="username" placeholder="username" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
             <input type="password" name="password1" placeholder="Password" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
             <input type="password" name="password2" placeholder="Password (retype)" class="bg-gray-700 w-96 h-16 rounded-2xl text-center mb-6"><br>
-            <input type="submit" value="Sign Up" class="bg-blue-800 w-96 h-16 rounded-2xl text-center mb-6 text-white">
+            <input type="submit" value="Sign Up" class="bg-blue-800 w-96 h-16 rounded-2xl text-center mb-6 text-white cursor-pointer">
         </form>
         <p class="text-white">Already have an account ?<a href="login.php" class="text-blue-500"> Login</a></p>
     </div>

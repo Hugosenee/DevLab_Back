@@ -3,10 +3,15 @@
 session_start();
 
 require_once 'connection.php';
+require_once 'album.php';
+require_once 'movie.php';
 
 $connection = new Connection();
 if($_SESSION){
-    $get = $connection->getiduser($_SESSION['email']);
+    $infosession = $connection->getinfo($_SESSION['email']);
+    $_SESSION['id'] = $infosession[0]['id'];
+    $_SESSION['username'] = $infosession[0]['username'];
+    $_SESSION['email'] = $infosession[0]['email'];
 }
 // a demander a Alexis si faire en POO
 $movieId = $connection->get("id");
@@ -57,9 +62,39 @@ $movieId = $connection->get("id");
 
 <div class=" w-screen h-screen bg-bgblue ml-60">
 <p id="movieId" class="hidden"><?= $movieId?></p>
+
+
+    <?php
+    if($_SESSION){ ?>
+    <form method="post">
+        <label for="albumId" class="text-white">Ajouter ce film a l'album : </label>
+        <select name="album_id" id="albumId">
+            <?php
+            $allAlbum = $connection->getUserAlbum($_SESSION['id']);
+
+            foreach ($allAlbum as $album) {
+                echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
+            }
+            ?>
+        </select>
+        <input type="submit" value="Ajouter" class="cursor-pointer bg-white">
+    </form>
+    <?php }
+
+    if($_POST) {
+        $movie = new movie(
+            $_POST['album_id'],
+            $movieId
+        );
+        $addMovie = $connection->addMovie($movie);
+        echo '<p class="text-white">This movie as been added</p>';
+    }
+    ?>
+
     <div id="movie-wrapper">
 
     </div>
+
 </div>
 
 
