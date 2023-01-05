@@ -87,7 +87,7 @@ $movieId = $connection->get("id");
             $movieId
         );
         $addMovie = $connection->addMovie($movie);
-        echo '<p class="text-white">This movie as been added</p>';
+        echo '<p class="text-white">This movie has been added</p>';
     }
     ?>
 
