@@ -35,10 +35,15 @@ $searchResult = $connection->get("search");
     </div>
     <hr class="border-slate-500 w-40 ml-12 mt-5">
     <div class="flex justify-center">
-        <ul class="text-white mt-10 text-2xl gap-24">
-            <li class="mb-4 flex"><img src="image/account.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">My Account</li>
-            <li class="flex"><img src="image/albums.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">My Albums</li>
-        </ul>
+        <?php
+        if ($_SESSION){ ?>
+            <ul class="text-white mt-10 text-2xl gap-24">
+                <li class="mb-4 flex"><img src="image/account.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="myProfile.php">My Account</a></li>
+                <li class="flex"><img src="image/friends.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="allProfiles.php">All Profiles</a></li>
+            </ul>
+        <?php }
+
+        ?>
     </div>
     <div class="flex justify-center">
         <div class="text-white mt-60 text-2xl gap-24 flex-col">

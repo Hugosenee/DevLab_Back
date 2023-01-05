@@ -4,7 +4,7 @@ if (isset($_GET['id'])) {
     require_once 'connection.php';
 
     $connection = new Connection();
-    $connection->deleteAlbum($_GET['id']);
+    $connection->deleteMovieFromAlbum($_GET['id']);
 
-    header('Location: myProfile.php');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 }

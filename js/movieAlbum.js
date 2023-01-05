@@ -12,6 +12,7 @@ async function getMovieFromAlbum(movId) {
         resultsContainer.innerHTML += `
                 <a href="movieSingle.php?id=${data.id}">
                         <img class="w-32" src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}">
+                        <a href="deleteMovieFromAlbum.php?id=${data.id}">Supprimer</a>
                 </a>
             `;
     } catch (error) {

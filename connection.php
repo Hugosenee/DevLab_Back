@@ -79,6 +79,15 @@ class Connection
 
     public function deleteAlbum(int $id): bool
     {
+        $query1 = 'DELETE FROM film
+                  WHERE album_id = :id';
+
+        $statement1 = $this->pdo->prepare($query1);
+
+        $statement1->execute([
+            'id' => $id,
+        ]);
+
         $query = 'DELETE FROM album
                   WHERE id = :id';
 
@@ -110,6 +119,44 @@ class Connection
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function deleteMovieFromAlbum(int $id): bool
+    {
+        $query = 'DELETE FROM film WHERE film_id = :id';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'id' => $id,
+        ]);
+    }
+
+    public function getAllProfiles(): array
+    {
+        $query = 'SELECT * FROM user';
+
+        $statement= $this->pdo->prepare($query);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getUserAlbumPublic($userId): array
+    {
+        $query = "SELECT * FROM album WHERE user_id = '$userId' AND is_Private = 1";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getnameprofile($id)
+    {
+        $query = "SELECT * FROM user WHERE id = '$id'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        $board = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $board;
+    }
 
 }
 
