@@ -30,11 +30,6 @@ async function getMovieById() {
                         </div>
                     </div>
                 </div>
-               
-               
-               <!--<img class="w-3/5 h-3/5" src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="${data.title}">-->
-
-               
             `;
     } catch (error) {
         console.error(error);

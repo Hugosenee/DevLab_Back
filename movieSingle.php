@@ -3,14 +3,17 @@
 session_start();
 
 require_once 'connection.php';
+require_once 'album.php';
+require_once 'movie.php';
 
 $connection = new Connection();
 if($_SESSION){
-    $connection = new Connection();
     $infosession = $connection->getinfo($_SESSION['email']);
-    $_SESSION['username'] = $infosession[0]['username'];
     $_SESSION['id'] = $infosession[0]['id'];
+    $_SESSION['username'] = $infosession[0]['username'];
+    $_SESSION['email'] = $infosession[0]['email'];
 }
+// a demander a Alexis si faire en POO
 $movieId = $connection->get("id");
 ?>
 
@@ -22,14 +25,14 @@ $movieId = $connection->get("id");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href=ccd "style.scss">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Single Movie</title>
+    <title>Catégories</title>
 </head>
 <body class="flex bg-slate-900">
 
 <div class="h-full bg-black w-60 flex flex-col fixed top-0">
     <div class="flex justify-center">
         <ul class="text-white mt-24 text-2xl">
-            <li class="mb-4 flex"><img src="image/home.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
+            <li class="mb-4  flex"><img src="image/home.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
             <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
         </ul>
     </div>
@@ -57,11 +60,41 @@ $movieId = $connection->get("id");
 
 
 
-<div class=" w-screen h-screen ml-60">
+<div class=" w-screen h-screen bg-bgblue ml-60">
 <p id="movieId" class="hidden"><?= $movieId?></p>
+
+
+    <?php
+    if($_SESSION){ ?>
+    <form method="post">
+        <label for="albumId" class="text-white">Ajouter ce film a l'album : </label>
+        <select name="album_id" id="albumId">
+            <?php
+            $allAlbum = $connection->getUserAlbum($_SESSION['id']);
+
+            foreach ($allAlbum as $album) {
+                echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
+            }
+            ?>
+        </select>
+        <input type="submit" value="Ajouter" class="cursor-pointer bg-white">
+    </form>
+    <?php }
+
+    if($_POST) {
+        $movie = new movie(
+            $_POST['album_id'],
+            $movieId
+        );
+        $addMovie = $connection->addMovie($movie);
+        echo '<p class="text-white">This movie has been added</p>';
+    }
+    ?>
+
     <div id="movie-wrapper">
 
     </div>
+
 </div>
 
 
