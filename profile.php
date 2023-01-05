@@ -77,7 +77,7 @@ if($_SESSION){
             }
             echo '</p>';
             echo '<p class="text-xl mb-6">' . $album['name'] . '</p>';
-            echo '<a href="albumSingle.php?id=' . $album['id'] . '">Voir</a>';
+            echo '<a href="albumSingle.php?albumId=' . $album['id'] . '&albumName=' . $album['name'] . '">Voir</a>';
             echo '<a href="deleteAlbum.php?id=' . $album['id'] . '">Supprimer</a>';
             echo '</div>';
         }

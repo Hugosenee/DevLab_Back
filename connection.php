@@ -68,6 +68,7 @@ class Connection
             'id' => $album->user_id,
         ]);
     }
+
     public function getUserAlbum($userId): array
     {
         $query = "SELECT * FROM album WHERE user_id = '$userId'";
@@ -99,6 +100,14 @@ class Connection
             'albumId' => $movie->albumId,
             'movieId' => $movie->movieId,
         ]);
+    }
+
+    public function getMovieFromAlbum($albumId): array
+    {
+        $query = "SELECT * FROM film WHERE album_id = '$albumId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
