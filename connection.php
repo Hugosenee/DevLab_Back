@@ -38,10 +38,16 @@ class Connection
         }
     }
 
-    public function getiduser($email): array
+    public function get ($param): string
+    {
+        $result = $_GET[$param];
+        return $result;
+
+    }
+
+    public function getinfo($email)
     {
         $query = "SELECT * FROM user WHERE email = '$email'";
-
         $statement = $this->pdo->prepare($query);
         $statement->execute();
         $board = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -49,11 +55,6 @@ class Connection
         return $board;
     }
 
-    public function get ($param): string
-    {
-        $result = $_GET[$param];
-        return $result;
 
-    }
 }
 

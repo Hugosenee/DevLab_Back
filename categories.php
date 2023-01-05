@@ -4,9 +4,11 @@ session_start();
 
 require_once 'connection.php';
 
-$connection = new Connection();
 if($_SESSION){
-    $get = $connection->getid($_SESSION['email']);
+    $connection = new Connection();
+    $infosession = $connection->getinfo($_SESSION['email']);
+    $_SESSION['username'] = $infosession[0]['username'];
+    $_SESSION['id'] = $infosession[0]['id'];
 }
 ?>
 
@@ -40,7 +42,7 @@ if($_SESSION){
         <div class="text-white mt-60 text-2xl gap-24 flex-col">
             <?php
             if($_SESSION){ ?>
-                <p class="text-base"> <?= $_SESSION['email'] ?> </p>
+                <p class="text-base"> <?= $_SESSION['username'] ?> </p>
                 <?php echo '<a href="logout.php" id="deco" class="text-base">Déconnexion</a>';
             }   else {
                 echo '<a href="login.php"><li class="mb-2 flex"><img src="image/login.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Login</li></a>

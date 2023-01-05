@@ -6,7 +6,10 @@ require_once 'connection.php';
 
 $connection = new Connection();
 if($_SESSION){
-    $get = $connection->getiduser($_SESSION['email']);
+    $connection = new Connection();
+    $infosession = $connection->getinfo($_SESSION['email']);
+    $_SESSION['username'] = $infosession[0]['username'];
+    $_SESSION['id'] = $infosession[0]['id'];
 }
 
 $searchResult = $connection->get("search");
@@ -26,7 +29,7 @@ $searchResult = $connection->get("search");
 <div class="h-full bg-black w-60 flex flex-col fixed top-0">
     <div class="flex justify-center">
         <ul class="text-white mt-24 text-2xl">
-            <li class="mb-4 text-yellow-400 flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
+            <li class="mb-4 flex"><img src="image/home.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
             <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
         </ul>
     </div>
@@ -41,7 +44,7 @@ $searchResult = $connection->get("search");
         <div class="text-white mt-60 text-2xl gap-24 flex-col">
             <?php
             if($_SESSION){ ?>
-                <p class="text-base"> <?= $_SESSION['email'] ?> </p>
+                <p class="text-base"> <?= $_SESSION['username'] ?> </p>
                 <?php echo '<a href="logout.php" id="deco" class="text-base">Déconnexion</a>';
             }   else {
                 echo '<a href="login.php"><li class="mb-2 flex"><img src="image/login.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Login</li></a>
