@@ -3,6 +3,7 @@
 session_start();
 
 require_once 'connection.php';
+require_once 'sharedAlbum.php';
 
 
 $connection = new Connection();
@@ -14,6 +15,8 @@ if($_SESSION){
 }
 
 $profileId = $connection->get('userId');
+
+$albumIdLiked = $connection->getAlbumLikeFromUser($profileId);
 
 ?>
 
@@ -44,9 +47,7 @@ $profileId = $connection->get('userId');
                     <li class="mb-4 flex"><img src="image/account.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="myProfile.php">My Account</a></li>
                     <li class="flex"><img src="image/friends.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="allProfiles.php">All Profiles</a></li>
                 </ul>
-            <?php }
-
-            ?>
+            <?php } ?>
 
         </div>
         <div class="flex justify-center">
@@ -89,12 +90,53 @@ $profileId = $connection->get('userId');
                 echo '<p class="text-xs">';
                 echo '</p>';
                 echo '<p class="text-xl mb-6">' . $album['name'] . '</p>';
-                echo '<a href="albumSingle.php?albumId=' . $album['id'] . '&albumName=' . $album['name'] . '">Voir</a>';
+                echo '<a href="albumSingle.php?albumId=' . $album['id'] . '&albumName=' . $album['name'] . '&albumCreator=' . $album['user_id'] . '">Voir</a>';
                 echo '</div>';
             }
 
             ?>
         </div>
+        <p class="text-white">Ses albums likés :</p>
+        <div class="flex gap-3 text-white">
+            <?php
+                foreach ($albumIdLiked as $album) {
+                    $getAlbum = $connection->getAlbumFromAlbumId($album['album_id']);
+                    echo '<div class="flex flex-col border px-6 py-3">';
+                    echo '<p class="text-xs">';
+                    echo '</p>';
+                    echo '<p class="text-xl mb-6">' . $getAlbum['name'] . '</p>';
+                    echo '<a href="albumSingle.php?albumId=' . $getAlbum['id'] . '&albumName=' . $getAlbum['name'] . '&albumCreator=' . $getAlbum['user_id'] . '">Voir</a>';
+                    echo '</div>';
+                }
+            ?>
+        </div>
+        <p class="text-white">Partager avec lui :</p>
+        <form method="POST">
+            <select name="shared_album_id" id="shared_album_id">
+                <?php
+                $allAlbum = $connection->getUserAlbum($_SESSION['id']);
+
+                foreach ($allAlbum as $album) {
+                    echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
+                }
+                ?>
+                <input type="submit" value="Partager" class="cursor-pointer bg-white ml-2">
+            </select>
+        </form>
+
+        <?php
+
+    if($_POST) {
+        $sharedAlbum = new sharedAlbum(
+            $_POST['shared_album_id'],
+            $_SESSION['id'],
+            $profileId
+        );
+        $addShareAlbum = $connection->insertSharedAlbum($sharedAlbum);
+        echo '<p class="text-white">This album has been shared</p>';
+    }
+    ?>
+
     </body>
     </html>
 <?php

@@ -21,6 +21,7 @@ class Connection
             'username' => $user->username,
             'password' => md5($user->password . 'MY_SUPER_SALT'),
         ]);
+
     }
 
     public function connect(Userconnect $user): bool
@@ -156,6 +157,90 @@ class Connection
         $board = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $board;
+    }
+
+    public function addLike(like $like): bool
+    {
+        $query = 'INSERT INTO `like` (album_id, user_id)
+                  VALUES (:albumId, :userId)';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'albumId' => $like->albumId,
+            'userId' => $like->userId,
+        ]);
+    }
+
+    public function getAlbumLikeFromUser($userId): array
+    {
+        $query = "SELECT album_id FROM `like` WHERE user_id = '$userId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAlbumFromAlbumId($albumId): array
+    {
+        $query = "SELECT * FROM album WHERE id = '$albumId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
+    }
+
+    public function insertSharedAlbum(sharedAlbum $sharedAlbum):bool
+    {
+        $query = "INSERT INTO shared_album ( album_id, owner_id, shared_with)
+                  VALUES (:albumId, :ownerId, :sharedId) ";
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'albumId' => $sharedAlbum->albumId,
+            'ownerId' => $sharedAlbum->ownerId,
+            'sharedId' => $sharedAlbum->sharedId,
+        ]);
+    }
+
+    public function getInvitation($userId): array
+    {
+        $query = "SELECT * FROM shared_album WHERE shared_with = '$userId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+    public function refuseInvit(int $id): bool
+    {
+        $query = 'DELETE FROM shared_album
+                  WHERE id = :id';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'id' => $id,
+        ]);
+    }
+
+    public function acceptInvit(int $id): bool
+    {
+        $query = 'UPDATE shared_album SET acceptation = 1 WHERE id = :id';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'id' => $id,
+        ]);
+    }
+
+    public function getSharedAlbums($userId): array
+    {
+        $query = "SELECT * FROM shared_album WHERE shared_with = '$userId' AND acceptation = 1";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
 }

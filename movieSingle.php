@@ -73,18 +73,34 @@ $movieId = $connection->get("id");
     if($_SESSION){ ?>
     <form method="post">
         <label for="albumId" class="text-white">Ajouter ce film a l'album : </label>
-        <select name="album_id" id="albumId">
+        <select name="album_id" id="albumId" class="text-black">
             <?php
             $allAlbum = $connection->getUserAlbum($_SESSION['id']);
 
             foreach ($allAlbum as $album) {
                 echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
             }
+
+            $albumShared = $connection->getSharedAlbums($_SESSION['id']);
+
+            foreach ($albumShared as $album) {
+                $getAlbum = $connection->getAlbumFromAlbumId($album['album_id']);
+                echo '<option value="' . $getAlbum['id'] . '">' . $getAlbum['name'] . '</option>';
+
+            }
+
+
+
             ?>
         </select>
         <input type="submit" value="Ajouter" class="cursor-pointer bg-white">
     </form>
     <?php }
+
+
+
+
+
 
     if($_POST) {
         $movie = new movie(

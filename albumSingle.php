@@ -4,6 +4,8 @@ session_start();
 
 require_once 'connection.php';
 require_once 'album.php';
+require_once 'like.php';
+
 
 
 $connection = new Connection();
@@ -18,8 +20,12 @@ if($_SESSION){
 
 
 $albumId = $connection->get("albumId");
-$albumName = $_GET['albumName'];
+$albumName = $connection->get("albumName");
 
+if(isset($_GET['albumCreator'])) {
+    $albumCreator = $connection->get("albumCreator");
+
+}
 $getMovies = $connection->getMovieFromAlbum($albumId);
 
 $movieIds = array();
@@ -79,6 +85,22 @@ foreach ($getMovies as $element) {
 <!-- content -->
 <div class="w-screen h-screen text-white bg-slate-900 ml-60">
 <h1><?php echo $albumName ?></h1>
+    <form method="POST">
+        <input type="hidden" name="albumId" value="<?php echo $albumId ?>">
+        <input type="hidden" name="userId" value="<?php echo $_SESSION['id'] ?>">
+
+        <input type="submit" value="like">
+    </form>
+    <?php
+    if ($_POST) {
+        $like = new like(
+            $_POST['albumId'],
+            $_POST['userId']
+        );
+        $addLike = $connection->addLike($like);
+    }
+
+    ?>
     <div id="movie-wrapper">
 
     </div>
@@ -87,6 +109,8 @@ foreach ($getMovies as $element) {
 
 <script>
     let movieIdsStr = "<?php echo json_encode($movieIds); ?>";
+    let sessionId = "<?php echo $_SESSION['id'] ?>";
+    let creatorId = "<?php echo $albumCreator ?>";
 </script>
 <script src="js/movieAlbum.js"></script>
 </body>

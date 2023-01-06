@@ -31,7 +31,7 @@ require_once 'user.php';
 
 
 if ($_POST){
-    $newco = new Userconnect(
+    $newco = new Userconnect (
         $_POST['email'],
         $_POST['password'],
     );

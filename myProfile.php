@@ -21,7 +21,6 @@ if($_SESSION){
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.scss">
     <title>Home</title>
@@ -82,19 +81,51 @@ if($_SESSION){
             }
             echo '</p>';
             echo '<p class="text-xl mb-6">' . $album['name'] . '</p>';
-            echo '<a href="albumSingle.php?albumId=' . $album['id'] . '&albumName=' . $album['name'] . '">Voir</a>';
+            echo '<a href="albumSingle.php?albumId=' . $album['id'] . '&albumName=' . $album['name'] . '&albumCreator=' . $album['user_id'] . '">Voir</a>';
             echo '<a href="deleteAlbum.php?id=' . $album['id'] . '">Supprimer</a>';
             echo '</div>';
         }
 
         ?>
     </div>
-    <p>Partagés avec vous :</p>
-    <div>
 
+
+    <p class="text-white">Mes likes :</p>
+    <div class="flex gap-3 text-white">
+        <?php
+        $albumIdLiked = $connection->getAlbumLikeFromUser($_SESSION['id']);
+
+        foreach ($albumIdLiked as $album) {
+            $getAlbum = $connection->getAlbumFromAlbumId($album['album_id']);
+            echo '<div class="flex flex-col border px-6 py-3">';
+            echo '<p class="text-xs">';
+            echo '</p>';
+            echo '<p class="text-xl mb-6">' . $getAlbum['name'] . '</p>';
+            echo '<a href="albumSingle.php?albumId=' . $getAlbum['id'] . '&albumName=' . $getAlbum['name'] . '&albumCreator=' . $getAlbum['user_id'] . '">Voir</a>';
+            echo '</div>';
+        }
+        ?>
     </div>
 
-<p>Ajouter un album :</p>
+
+    <p>Partagés avec vous :</p>
+    <div>
+        <?php
+        $albumShared = $connection->getSharedAlbums($_SESSION['id']);
+
+        foreach ($albumShared as $album) {
+            $getAlbum = $connection->getAlbumFromAlbumId($album['album_id']);
+            echo '<div class="flex flex-col border px-6 py-3">';
+            echo '<p class="text-xs">';
+            echo '</p>';
+            echo '<p class="text-xl mb-6">' . $getAlbum['name'] . '</p>';
+            echo '<a href="albumSingle.php?albumId=' . $getAlbum['id'] . '&albumName=' . $getAlbum['name'] . '&albumCreator=' . $getAlbum['user_id'] . '">Voir</a>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+
+    <p>Ajouter un album :</p>
     <div class="flex">
         <form method="post" class="text-black">
             <input type="text" name="name" placeholder="album name">
@@ -105,6 +136,23 @@ if($_SESSION){
             <input type="submit" value="Créer" class="cursor-pointer bg-white">
         </form>
     </div>
+    <p>Invitations :</p>
+
+    <?php
+
+    $invitation = $connection->getInvitation($_SESSION['id']);
+    foreach ($invitation as $invit) {
+        if ($invit['acceptation'] == 0) {
+            echo 'Vous avez une invitation, voulez vous l\'accepter';
+            echo '<br>';
+            echo '<a href="responseInvit.php?response=1&invitId=' . $invit['id'] . '" class="text-green-600">Accepter</a>';
+            echo '<a href="responseInvit.php?response=0&invitId=' . $invit['id'] . '" class="text-red-600">Refuser</a>';
+
+        }
+    }
+    ?>
+
+
 </div>
 
 <?php
@@ -118,5 +166,8 @@ if($_POST) {
 }
 
 ?>
+
+
+
 </body>
 </html>

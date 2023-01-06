@@ -76,7 +76,7 @@ if($_SESSION){
         </div>
         <div class="flex justify-center">
             <div id="slideShow" class="w-3/4 h-72 bg-gray-400 mt-10 rounded-3xl overflow-hidden">
-                <img src="image/spiderman.jpg" alt="affiche spiderman">
+                <img class="w-full" src="image/spiderman.jpg" alt="affiche spiderman">
             </div>
         </div>
     </div>
