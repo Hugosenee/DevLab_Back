@@ -34,6 +34,8 @@ foreach ($getMovies as $element) {
     $movieIds[] = $element['film_id'];
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -83,25 +85,45 @@ foreach ($getMovies as $element) {
     </div>
 </div>
 <!-- content -->
-<div class="w-screen h-screen text-white bg-slate-900 ml-60">
-<h1><?php echo $albumName ?></h1>
-    <form method="POST">
-        <input type="hidden" name="albumId" value="<?php echo $albumId ?>">
-        <input type="hidden" name="userId" value="<?php echo $_SESSION['id'] ?>">
+<div class="w-screen h-screen text-white bg-slate-900 ml-60 flex flex-col items-center">
+    <div class="flex">
+        <h1 class="text-center text-5xl mt-5"><?php echo $albumName ?></h1>
+        <form method="POST">
+            <input type="hidden" name="albumId" value="<?php echo $albumId ?>">
+            <input type="hidden" name="userId" value="<?php echo $_SESSION['id'] ?>">
 
-        <input type="submit" value="like">
-    </form>
-    <?php
-    if ($_POST) {
-        $like = new like(
-            $_POST['albumId'],
-            $_POST['userId']
-        );
-        $addLike = $connection->addLike($like);
-    }
+            <?php
+            $albumAlreadyLiked = $connection->getIfAnAlbumIsLiked($albumId, $_SESSION['id']);
 
-    ?>
-    <div id="movie-wrapper">
+            $albumAlreadyLikedNumber = count($albumAlreadyLiked);
+
+
+            if ($albumAlreadyLikedNumber == 1) {
+               echo '<button  type="submit" value="like"><iconify-icon class="text-3xl mt-8 ml-4 text-red-600"  icon="mdi:cards-heart-outline"></iconify-icon></button>';
+
+            } else if ($albumAlreadyLikedNumber == 2){
+                $suppLike = $connection->deleteLike($albumId, $_SESSION['id']);
+                $albumAlreadyLikedNumber = 0;
+            } else {
+               echo ' <button  type="submit" value="like"><iconify-icon class="text-3xl mt-8 ml-4"  icon="mdi:cards-heart-outline"></iconify-icon></button>';
+
+            }
+
+            ?>
+
+        </form>
+        <?php
+        if ($_POST) {
+            $like = new like(
+                $_POST['albumId'],
+                $_POST['userId']
+            );
+            $addLike = $connection->addLike($like);
+        }
+
+        ?>
+    </div>
+    <div id="movie-wrapper" class="flex flex-wrap gap-10 justify-center py-16 bg-slate-800 mt-5 rounded-2xl w-4/5">
 
     </div>
 

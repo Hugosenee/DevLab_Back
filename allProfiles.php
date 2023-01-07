@@ -22,7 +22,7 @@ if($_SESSION){
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.scss">
-    <title>Home</title>
+    <title>Profiles</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </head>
@@ -64,16 +64,24 @@ if($_SESSION){
 
 
 <div class=" w-screen h-screen bg-slate-900 ml-60">
-    <?php
+    <p class="text-center font-bold text-5xl mt-5 mb-10 text-white">Tous les profils</p>
+    <div class="flex flex-wrap justify-around">
+        <?php
 
-    $allProfiles = $connection->getAllProfiles();
+        $allProfiles = $connection->getAllProfiles();
 
-    foreach ($allProfiles as $profile) {
-        echo '<p class="text-white mt-7">' . $profile['username'] . '</p>';
-        echo '<a class="text-white" href="singleProfile.php?userId=' . $profile['id'] . '">Voir le profil</a>';
-    }
+        foreach ($allProfiles as $profile) {
+            echo '<div class="flex flex-col h-96 w-48 bg-slate-800 rounded-2xl items-center">';
+                echo '<img class="rounded-full w-3/5 mt-10" src="image/profile.jpg">';
+                echo '<p class="text-white mt-7 text-center font-bold">' . $profile['username'] . '</p>';
+                echo '<a class="text-white text-center mt-36" href="singleProfile.php?userId=' . $profile['id'] . '">Voir le profil</a>';
+            echo '</div>';
+        }
 
 
-    ?>
+        ?>
+    </div>
+
+</div>
 </body>
 </html>

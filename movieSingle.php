@@ -25,7 +25,7 @@ $movieId = $connection->get("id");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href=ccd "style.scss">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Catégories</title>
+    <title>Film</title>
 </head>
 <body class="flex bg-slate-900">
 

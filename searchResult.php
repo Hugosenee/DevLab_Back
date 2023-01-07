@@ -22,7 +22,7 @@ $searchResult = $connection->get("search");
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.scss">
-    <title>Home</title>
+    <title>Search</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex">

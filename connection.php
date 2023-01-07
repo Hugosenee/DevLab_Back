@@ -243,5 +243,27 @@ class Connection
 
     }
 
+    public function getIfAnAlbumIsLiked($albumId, $userId): array
+    {
+        $query = "SELECT * FROM `like` WHERE album_id = '$albumId' AND user_id = '$userId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteLike($albumId, $userId): bool
+    {
+        $query = "DELETE FROM `like` WHERE album_id = '$albumId' AND user_id = '$userId'";
+
+        $statement = $this->pdo->prepare($query);
+
+        if ($statement->execute()) {
+            return true;
+        }   else {
+            return false;
+        }
+
+    }
+
 }
 

@@ -10,10 +10,12 @@ async function getMovieFromAlbum(movId) {
         if (sessionId === creatorId) {
 
         resultsContainer.innerHTML += `
-                <a href="movieSingle.php?id=${data.id}">
+                <div class="flex flex-col">
+                    <a href="movieSingle.php?id=${data.id}">
                         <img class="w-32" src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}">
-                        <a href="deleteMovieFromAlbum.php?id=${data.id}">Supprimer</a>
-                </a>
+                        <a class="text-center text-2xl text-gray-600 mt-3" href="deleteMovieFromAlbum.php?id=${data.id}"><iconify-icon icon="material-symbols:delete-outline-rounded"></iconify-icon></a>
+                    </a>
+                </div>
             `;
         } else {
             resultsContainer.innerHTML += `

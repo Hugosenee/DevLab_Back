@@ -13,6 +13,8 @@ if($_SESSION){
     $_SESSION['email'] = $infosession[0]['email'];
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
