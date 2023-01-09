@@ -11,7 +11,16 @@ if($_SESSION){
     $_SESSION['id'] = $infosession[0]['id'];
     $_SESSION['username'] = $infosession[0]['username'];
     $_SESSION['email'] = $infosession[0]['email'];
+    $checkAlbums = $connection->checkIfAlbumsUser($_SESSION['id']);
+
+    $checkAlbumsCount = count($checkAlbums);
+    if ($checkAlbumsCount < 1){
+        $createAlbumAtRegister = $connection->createAlbumsAtRegister($_SESSION['id']);
+    }
 }
+
+
+
 
 
 
@@ -83,7 +92,7 @@ if($_SESSION){
         </div>
     </div>
     <div class=" w-full h-80 mt-10">
-        <p class="text-white text-2xl ml-40 mb-8">Tendances :</p>
+        <p class="text-white text-2xl ml-40 mb-8">Trending :</p>
         <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
             <div id="popularMovies" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
 
@@ -91,9 +100,17 @@ if($_SESSION){
         </div>
     </div>
     <div class=" w-full h-80 mt-10">
-        <p class="text-white text-2xl ml-40 mb-8">All TV Shows :</p>
+        <p class="text-white text-2xl ml-40 mb-8">Best Seller :</p>
         <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
             <div id="popularTv" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
+
+            </div>
+        </div>
+    </div>
+    <div class=" w-full h-80 mt-10">
+        <p class="text-white text-2xl ml-40 mb-8">Discover :</p>
+        <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
+            <div id="Discover" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
 
             </div>
         </div>

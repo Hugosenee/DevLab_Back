@@ -265,5 +265,34 @@ class Connection
 
     }
 
+    public function checkIfAlbumsUser($userId): array
+    {
+        $query = "SELECT * FROM album WHERE user_id = '$userId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function createAlbumsAtRegister($userId): bool
+    {
+
+        $query = 'INSERT INTO album (name, is_private, user_id)
+                  VALUES (:name, :is_private, :user_id),
+                         ( :name2, :is_private2, :user_id2)';
+
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'name' => 'visionés',
+            'is_private' => 1,
+            'user_id' => $userId,
+            'name2' => 'liste d\'envies',
+            'is_private2' => 1,
+            'user_id2' => $userId,
+        ]);
+
+    }
+
+
 }
 

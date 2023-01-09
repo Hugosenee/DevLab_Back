@@ -157,8 +157,8 @@ if($_SESSION){
     foreach ($invitation as $invit) {
         if ($invit['acceptation'] == 0) {
             echo '<div class="bg-slate-800 absolute top-5 right-5 h-1/5 rounded-3xl w-1/5">';
-                echo '<p class="text-center font-bold mt-3 mb-2 h-2/5">Vous avez une invitation, voulez vous l\'accepter</p>';
-                echo '<div class="flex justify-around">';
+                echo '<p class="text-center font-bold mt-8 mb-2 h-2/5">Vous avez une invitation, voulez vous l\'accepter</p>';
+                echo '<div class="flex justify-around mt-3">';
                     echo '<a href="responseInvit.php?response=1&invitId=' . $invit['id'] . '" class="text-green-600">Accepter</a>';
                     echo '<a href="responseInvit.php?response=0&invitId=' . $invit['id'] . '" class="text-red-600">Refuser</a>';
                 echo '</div>';
