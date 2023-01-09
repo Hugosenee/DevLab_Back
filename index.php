@@ -115,6 +115,14 @@ if($_SESSION){
             </div>
         </div>
     </div>
+    <div class=" w-full h-80 mt-10">
+        <p class="text-white text-2xl ml-40 mb-8">Random :</p>
+        <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
+            <div id="Random" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
+
+            </div>
+        </div>
+    </div>
 </div>
 <script src="js/popular.js"></script>
 </body>
