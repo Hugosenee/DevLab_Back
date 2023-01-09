@@ -27,7 +27,8 @@ if($_SESSION){
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </head>
 <body class="flex">
-<div class="h-full bg-black w-60 flex flex-col fixed top-0">
+<div id="nav" class="max-[425px]:hidden h-full bg-black w-60 flex flex-col fixed top-0">
+    <iconify-icon id="closeBtn" icon="akar-icons:cross" class="hidden max-[425px]:block text-4xl text-white mr-3 ml-48 mt-4"></iconify-icon>
     <div class="flex justify-center">
         <ul class="text-white mt-24 text-2xl">
             <li class="mb-4 text-yellow-400 flex"><img src="image/homeyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
@@ -63,10 +64,11 @@ if($_SESSION){
 </div>
 
 
-<div class=" w-screen bg-slate-900 ml-60">
-    <div class=" flex flex-col">
-        <div class="flex justify-end mt-6 mr-12">
-            <div class="h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
+<div class="max-[425px]:ml-0 w-screen bg-slate-900 ml-60">
+    <div class="flex flex-col">
+        <div class="max-[425px]:mr-0 max-[425px]:justify-center flex justify-end mt-6 mr-12">
+            <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[425px]:block text-4xl text-white mr-3"></iconify-icon>
+            <div class="max-[425px]:w-4/6 h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
                 <form class="flex w-full" action="searchResult.php" method="GET">
                     <input type="text" placeholder="Recherche" name="search" class="focus:outline-none w-full bg-gray-400 rounded-3xl text-white text-center">
                     <button type="submit"><iconify-icon icon="ic:baseline-search" class="text-white text-3xl mr-4 mt-1"></iconify-icon></button>
@@ -75,7 +77,7 @@ if($_SESSION){
             <img src="image/notification.png" alt="notification" class="h-8 w-8 mt-1">
         </div>
         <div class="flex justify-center">
-            <div id="slideShow" class="w-3/4 h-72 bg-gray-400 mt-10 rounded-3xl overflow-hidden">
+            <div id="slideShow" class="max-[425px]:h-32 w-3/4 h-72 bg-gray-400 mt-10 rounded-3xl overflow-hidden">
                 <img class="w-full" src="image/spiderman.jpg" alt="affiche spiderman">
             </div>
         </div>
@@ -97,6 +99,7 @@ if($_SESSION){
         </div>
     </div>
 </div>
+<script src="js/burger.js"></script>
 <script src="js/popular.js"></script>
 </body>
 </html>

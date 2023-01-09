@@ -13,7 +13,6 @@ if($_SESSION){
     $_SESSION['username'] = $infosession[0]['username'];
     $_SESSION['email'] = $infosession[0]['email'];
 }
-// a demander a Alexis si faire en POO
 $movieId = $connection->get("id");
 ?>
 
