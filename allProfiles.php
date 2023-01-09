@@ -12,7 +12,7 @@ if($_SESSION){
     $_SESSION['username'] = $infosession[0]['username'];
     $_SESSION['email'] = $infosession[0]['email'];
 }
-
+$isAllPro = "";
 ?>
 
 <!DOCTYPE html>
@@ -27,43 +27,13 @@ if($_SESSION){
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </head>
 <body class="flex">
-<div class="h-full bg-black w-60 flex flex-col fixed top-0">
-    <div class="flex justify-center">
-        <ul class="text-white mt-24 text-2xl">
-            <li class="mb-4 flex"><img src="image/home.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
-            <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
-        </ul>
-    </div>
-    <hr class="border-slate-500 w-40 ml-12 mt-5">
-    <div class="flex justify-center">
-        <?php
-        if ($_SESSION){ ?>
-            <ul class="text-white mt-10 text-2xl gap-24">
-                <li class="mb-4 flex"><img src="image/account.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="myProfile.php">My Account</a></li>
-                <li class="text-yellow-400 flex"><img src="image/friendsyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="allProfiles.php">All Profiles</a></li>
-            </ul>
-        <?php }
-
-        ?>
-
-    </div>
-    <div class="flex justify-center">
-        <div class="text-white mt-60 text-2xl gap-24 flex-col">
-            <?php
-            if($_SESSION){ ?>
-                <p class="text-base"> <?= $_SESSION['username'] ?> </p>
-                <?php echo '<a href="logout.php" id="deco" class="text-base">Déconnexion</a>';
-            }   else {
-                echo '<a href="login.php"><li class="mb-2 flex"><img src="image/login.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Login</li></a>
-                  <a href="register.php" ><li class="flex"><img src="image/register.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Register</li></a>';
-            }
-            ?>
-        </div>
-    </div>
-</div>
-
-
-<div class=" w-screen h-screen bg-slate-900 ml-60">
+<!-- side bar -->
+<?php
+require('nav.php');
+?>
+<!-- content -->
+<div class="max-[425px]:ml-0 w-screen h-screen bg-slate-900 ml-60">
+    <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[425px]:block text-4xl text-white absolute top-5 left-5"></iconify-icon>
     <p class="text-center font-bold text-5xl mt-5 mb-10 text-white">Tous les profils</p>
     <div class="flex flex-wrap justify-around">
         <?php
@@ -83,5 +53,7 @@ if($_SESSION){
     </div>
 
 </div>
+<script src="js/burger.js"></script>
+
 </body>
 </html>

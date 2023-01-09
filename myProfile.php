@@ -15,6 +15,8 @@ if($_SESSION){
 } else {
     header('location: index.php');
 }
+
+$isMyPro = "";
 ?>
 
 <!DOCTYPE html>
@@ -28,46 +30,18 @@ if($_SESSION){
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </head>
 <body class="flex">
-<div class="h-full bg-black w-60 flex flex-col fixed top-0">
-    <div class="flex justify-center">
-        <ul class="text-white mt-24 text-2xl">
-            <li class="mb-4 flex"><img src="image/home.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="index.php">Home</a></li>
-            <li class="mb-4 flex"><img src="image/fichiers.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="categories.php">Categories</a></li>
-        </ul>
-    </div>
-    <hr class="border-slate-500 w-40 ml-12 mt-5">
-    <div class="flex justify-center">
-        <?php
-        if ($_SESSION){ ?>
-            <ul class="text-white mt-10 text-2xl gap-24">
-                <li class="mb-4 text-yellow-400 flex"><img src="image/accountyellow.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="myProfile.php">My Account</a></li>
-                <li class="flex"><img src="image/friends.png" alt="home" class="w-6 h-6 mt-0.5 mr-2"><a href="allProfiles.php">All Profiles</a></li>
-            </ul>
-        <?php }
+<!-- side bar -->
+<?php
+require('nav.php');
+?>
+<!-- content -->
 
-        ?>
-    </div>
-    <div class="flex justify-center">
-        <div class="text-white mt-60 text-2xl gap-24 flex-col">
-            <?php
-            if($_SESSION){ ?>
-                <p class="text-base"> <?= $_SESSION['username'] ?> </p>
-                <?php echo '<a href="logout.php" id="deco" class="text-base">Déconnexion</a>';
-            }   else {
-                echo '<a href="login.php"><li class="mb-2 flex"><img src="image/login.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Login</li></a>
-                      <a href="register.php" ><li class="flex"><img src="image/register.png" alt="home" class="w-6 h-6 mt-0.5 mr-2">Register</li></a>';
-            }
-            ?>
-        </div>
-    </div>
-</div>
-
-
-<div class="w-screen h-screen text-white bg-slate-900 ml-60">
+<div class="max-[425px]:ml-0 w-screen h-screen text-white bg-slate-900 ml-60">
+    <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[425px]:block text-4xl text-white absolute top-5 left-5"></iconify-icon>
     <h1 class="text-5xl text-center"><?= $_SESSION['username'] ?></h1>
     <div class="pl-10">
         <p class="text-3xl mb-5">Mes albums :</p>
-        <div class="flex gap-3">
+        <div class="flex gap-3 flex-wrap">
             <?php
             $allAlbum = $connection->getUserAlbum($_SESSION['id']);
 
@@ -96,7 +70,7 @@ if($_SESSION){
 
     <div class="pl-10 mt-5">
         <p class="text-white text-3xl mb-5">Mes likes :</p>
-        <div class="flex gap-3 text-white">
+        <div class="flex gap-3 text-white flex-wrap">
             <?php
             $albumIdLiked = $connection->getAlbumLikeFromUser($_SESSION['id']);
 
@@ -116,7 +90,7 @@ if($_SESSION){
 
     <div class="pl-10 mt-5">
         <p class="text-white text-3xl mb-5">Partagés avec vous :</p>
-        <div class="flex gap-3 text-white">
+        <div class="flex gap-3 text-white flex-wrap">
             <?php
             $albumShared = $connection->getSharedAlbums($_SESSION['id']);
 
@@ -184,6 +158,6 @@ if($_POST) {
 ?>
 
 
-
+<script src="js/burger.js"></script>
 </body>
 </html>
