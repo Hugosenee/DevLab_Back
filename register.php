@@ -10,7 +10,7 @@
     <title>Register</title>
 </head>
 <body>
-<div class="h-full bg-black w-full flex  fixed">
+<div class="h-full bg-black w-full flex  fixed justify-center">
     <div class="w-1/2 h-full bg-black flex flex-col justify-center items-center">
         <h1 class="text-white text-4xl">Create a new account</h1>
         <h2 class="text-gray-500 text-sm pb-20">Please fill the form to continue</h2>
@@ -23,7 +23,6 @@
         </form>
         <p class="text-white">Already have an account ?<a href="login.php" class="text-blue-500"> Login</a></p>
     </div>
-    <div class="w-1/2 h-full bg-slate-900"></div>
 </div>
 
 

@@ -11,7 +11,18 @@ if($_SESSION){
     $_SESSION['id'] = $infosession[0]['id'];
     $_SESSION['username'] = $infosession[0]['username'];
     $_SESSION['email'] = $infosession[0]['email'];
+    $checkAlbums = $connection->checkIfAlbumsUser($_SESSION['id']);
+
+    $checkAlbumsCount = count($checkAlbums);
+    if ($checkAlbumsCount < 1){
+        $createAlbumAtRegister = $connection->createAlbumsAtRegister($_SESSION['id']);
+    }
 }
+
+
+
+
+
 
 ?>
 
@@ -64,11 +75,11 @@ if($_SESSION){
 </div>
 
 
-<div class="max-[425px]:ml-0 w-screen bg-slate-900 ml-60">
-    <div class="flex flex-col">
+<div class=" max-[425px]:ml-0 w-screen bg-slate-900 ml-60">
+    <div class=" flex flex-col">
         <div class="max-[425px]:mr-0 max-[425px]:justify-center flex justify-end mt-6 mr-12">
             <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[425px]:block text-4xl text-white mr-3"></iconify-icon>
-            <div class="max-[425px]:w-4/6 h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
+            <div class="h-10 w-80 bg-gray-400 rounded-3xl flex justify-between mr-4">
                 <form class="flex w-full" action="searchResult.php" method="GET">
                     <input type="text" placeholder="Recherche" name="search" class="focus:outline-none w-full bg-gray-400 rounded-3xl text-white text-center">
                     <button type="submit"><iconify-icon icon="ic:baseline-search" class="text-white text-3xl mr-4 mt-1"></iconify-icon></button>
@@ -83,7 +94,7 @@ if($_SESSION){
         </div>
     </div>
     <div class=" w-full h-80 mt-10">
-        <p class="text-white text-2xl ml-40 mb-8">Tendances :</p>
+        <p class="text-white text-2xl ml-40 mb-8">Trending :</p>
         <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
             <div id="popularMovies" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
 
@@ -91,9 +102,25 @@ if($_SESSION){
         </div>
     </div>
     <div class=" w-full h-80 mt-10">
-        <p class="text-white text-2xl ml-40 mb-8">All TV Shows :</p>
+        <p class="text-white text-2xl ml-40 mb-8">Best Seller :</p>
         <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
             <div id="popularTv" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
+
+            </div>
+        </div>
+    </div>
+    <div class=" w-full h-80 mt-10">
+        <p class="text-white text-2xl ml-40 mb-8">Discover :</p>
+        <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
+            <div id="Discover" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
+
+            </div>
+        </div>
+    </div>
+    <div class=" w-full h-80 mt-10">
+        <p class="text-white text-2xl ml-40 mb-8">Random :</p>
+        <div class="mx-auto max-w-7xl overflow-x-scroll h-64 w-4/5">
+            <div id="Random" class="flex gap-7 mb-7 w-32 h-32 flex-wrap flex-col">
 
             </div>
         </div>

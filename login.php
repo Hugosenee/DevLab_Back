@@ -10,7 +10,7 @@
     <title>Login</title>
 </head>
 <body>
-<div class="h-full bg-black w-full flex  fixed">
+<div class="h-full bg-black w-full flex  fixed justify-center">
     <div class="w-1/2 h-full bg-black flex flex-col justify-center items-center">
         <h1 class="text-white text-4xl">Welcome back !</h1>
         <h2 class="text-gray-500 text-sm pb-20">Please sign in to your account</h2>
@@ -21,7 +21,6 @@
         </form>
         <p class="text-white">Don't have an account ?<a href="register.php" class="text-blue-500"> Sign up</a></p>
     </div>
-    <div class="w-1/2 h-full bg-slate-900"></div>
 </div>
 
 <?php
