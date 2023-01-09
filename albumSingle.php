@@ -34,6 +34,14 @@ foreach ($getMovies as $element) {
     $movieIds[] = $element['film_id'];
 }
 
+$getSharedAlbum = $connection->deleteFilmsFromSharedAlbumIfYouAreNotTheOwner($albumId);
+
+
+foreach ($getSharedAlbum as $albumsShared){
+    $sharedId = $albumsShared['shared_with'];
+}
+
+
 
 
 ?>
@@ -103,6 +111,7 @@ require('nav.php');
 </div>
 
 <script>
+    let sharedId = "<?php echo $sharedId ?>";
     let movieIdsStr = "<?php echo json_encode($movieIds); ?>";
     let sessionId = "<?php echo $_SESSION['id'] ?>";
     let creatorId = "<?php echo $albumCreator ?>";

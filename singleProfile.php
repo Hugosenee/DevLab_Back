@@ -88,19 +88,21 @@ $albumIdLiked = $connection->getAlbumLikeFromUser($profileId);
                 ?>
             </div>
         </div>
-        <p class="text-white">Partager avec lui :</p>
-        <form method="POST">
-            <select name="shared_album_id" id="shared_album_id">
-                <?php
-                $allAlbum = $connection->getUserAlbum($_SESSION['id']);
+        <div class="pl-10">
+            <p class="text-white text-3xl">Partager avec lui :</p>
+            <form method="POST">
+                <select class="w-36" name="shared_album_id" id="shared_album_id">
+                    <?php
+                    $allAlbum = $connection->getUserAlbum($_SESSION['id']);
 
-                foreach ($allAlbum as $album) {
-                    echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
-                }
-                ?>
-                <input type="submit" value="Partager" class="cursor-pointer bg-white ml-2">
-            </select>
-        </form>
+                    foreach ($allAlbum as $album) {
+                        echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
+                    }
+                    ?>
+                    <input type="submit" value="Partager" class="cursor-pointer bg-white ml-2">
+                </select>
+            </form>
+        </div>
 
         <?php
 

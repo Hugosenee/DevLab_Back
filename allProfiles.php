@@ -32,7 +32,7 @@ $isAllPro = "";
 require('nav.php');
 ?>
 <!-- content -->
-<div class="max-[425px]:ml-0 w-screen h-screen bg-slate-900 ml-60">
+<div class="max-[425px]:ml-0 max-[425px]:h-auto  w-screen bg-slate-900 ml-60">
     <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[425px]:block text-4xl text-white absolute top-5 left-5"></iconify-icon>
     <p class="text-center font-bold text-5xl mt-5 mb-10 text-white">Tous les profils</p>
     <div class="flex flex-wrap justify-around">

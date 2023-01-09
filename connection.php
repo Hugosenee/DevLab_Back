@@ -293,6 +293,14 @@ class Connection
 
     }
 
+    public function deleteFilmsFromSharedAlbumIfYouAreNotTheOwner($albumId): array
+    {
+        $query = "SELECT * FROM shared_album WHERE album_id = '$albumId'";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    }
 
 }
 

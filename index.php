@@ -59,8 +59,8 @@ require('nav.php');
             <img src="image/notification.png" alt="notification" class="h-8 w-8 mt-1">
         </div>
         <div class="flex justify-center">
-            <div id="slideShow" class="max-[425px]:h-32 w-3/4 h-72 bg-gray-400 mt-10 rounded-3xl overflow-hidden">
-                <img class="w-full" src="image/spiderman.jpg" alt="affiche spiderman">
+            <div  class="max-[425px]:h-32 w-3/4 h-72 mt-10 rounded-3xl overflow-hidden">
+                <img id="slideShow" class="w-full">
             </div>
         </div>
     </div>
@@ -97,6 +97,7 @@ require('nav.php');
         </div>
     </div>
 </div>
+<script src="js/slideshow.js"></script>
 <script src="js/burger.js"></script>
 <script src="js/popular.js"></script>
 </body>

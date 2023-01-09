@@ -14,11 +14,11 @@ async function getMovieById() {
 
 
         resultsContainer.innerHTML = `
-                <div class="h-screen flex flex-wrap">
-                    <div class= "w-2/5 h-full flex items-center justify-center">
+                <div class="h-screen flex flex-wrap flex-col max-[768px]:block">
+                    <div class= "max-[768px]:w-full w-2/5 h-full flex items-center justify-center">
                         <img class="w-4/5 h-4/5 shadow-2xl" src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}">
                     </div>
-                    <div class="flex flex-col w-3/5 h-screen items-center justify-center">
+                    <div class="flex flex-col w-3/5 h-screen items-center justify-center  max-[768px]:mt-2/5 max-[768px]:w-full">
                         <h1 class="text-white font-bold w-4/5 text-3xl text-center">${data.title}</h1>
                         <p class="text-white w-4/5 text-center mt-5">${data.release_date}</p>
                         <p class="text-white w-4/5 text-center mt-5 text-2xl">${data.overview}</p>
