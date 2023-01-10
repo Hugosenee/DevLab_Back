@@ -93,7 +93,8 @@ require('nav.php');
         </div>
     </div>
 </div>
-<script src="js/slideShow.js"></script>
+
+<script src="js/slideshow.js"></script>
 <script src="js/burger.js"></script>
 <script src="js/popular.js"></script>
 </body>

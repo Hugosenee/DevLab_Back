@@ -32,8 +32,8 @@ require('nav.php');
 ?>
 <!-- content -->
 
-<div class="max-[425px]:ml-0 w-screen h-screen bg-slate-900 ml-60">
-    <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[425px]:block text-4xl text-white absolute top-5 left-5"></iconify-icon>
+<div class="max-[426px]:ml-0 max-[769px]:h-auto w-screen h-screen bg-slate-900 ml-60">
+    <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[426px]:block text-4xl text-white absolute top-5 left-5"></iconify-icon>
     <p class="text-white text-center">Résultat de Recherche : <span id="searchResult" class="text-blue-500"><?= $searchResult?></span></p>
     <div id="results" class="flex flex-wrap gap-10 justify-center py-16">
 

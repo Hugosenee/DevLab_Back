@@ -3,6 +3,7 @@ let movieIdsArray = JSON.parse(movieIdsStr);
 const apiKey = "94b6f6a8192762ed6a51bfc3dc86870d";
 const resultsContainer = document.getElementById('movie-wrapper');
 
+
 async function getMovieFromAlbum(movId) {
     try {
         const response = await fetch(`https://api.themoviedb.org/3/movie/${movId}?api_key=${apiKey}&language=fr-FR`);

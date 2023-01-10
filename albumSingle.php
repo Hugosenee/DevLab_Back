@@ -37,6 +37,8 @@ foreach ($getMovies as $element) {
 
 
 
+
+
 ?>
 
 <!DOCTYPE html>

@@ -36,7 +36,7 @@ require('nav.php');
 ?>
 <!-- content -->
 
-<div class="max-[425px]:ml-0 w-screen h-screen text-white bg-slate-900 ml-60">
+<div class="max-[425px]:ml-0 max-[769px]:h-auto w-screen h-screen text-white bg-slate-900 ml-60">
     <iconify-icon icon="charm:menu-hamburger" id="burgerBtn" class="hidden max-[425px]:block text-4xl text-white absolute top-5 left-5"></iconify-icon>
     <h1 class="text-5xl text-center"><?= $_SESSION['username'] ?></h1>
     <div class="pl-10">

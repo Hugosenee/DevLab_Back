@@ -14,7 +14,8 @@ async function getMovieById() {
 
 
         resultsContainer.innerHTML = `
-                 <div class="h-screen flex flex-wrap flex-col max-[768px]:block">
+
+                <div class="h-screen flex flex-wrap flex-col max-[768px]:block">
                     <div class= "max-[768px]:w-full w-2/5 h-full flex items-center justify-center">
                         <img class="w-4/5 h-4/5 shadow-2xl" src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}">
                     </div>
